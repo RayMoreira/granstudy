@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css"; // importa Tailwind e estilos globais
+import Providers from "@/components/Providers";
 
 // Metadados básicos do site (aparecem no navegador e ajudam no SEO)
 export const metadata: Metadata = {
@@ -7,12 +8,19 @@ export const metadata: Metadata = {
   description: "Planner de estudos acessível feito com Next.js + Tailwind",
 };
 
-// Este layout envolve todas as páginas.
-// Tudo que cada página retornar vai aparecer dentro do <body>{children}</body>.
+/**
+ * Layout raiz da aplicação.
+ * - Envolvemos o {children} com <Providers> para habilitar sessão (NextAuth)
+ *   em todas as páginas (useSession, signIn, signOut, etc.).
+ */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body>{children}</body>
+
+      {/* O providers precisa ficar dentro do <body> */}
+      <body>
+        <Providers>{children}</Providers>
+        </body>
     </html>
   );
 }

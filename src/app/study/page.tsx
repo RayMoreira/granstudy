@@ -9,6 +9,12 @@
  * Drag & Drop: HTML5 nativo (sem libs)
  */
 
+//src/app/planner/page.tsx
+import { redirect } from "next/navegation";
+export default function PlannerRedirect() {
+  redirect("/study");
+}
+
 import { useEffect, useMemo, useState } from "react";
 
 /* =========================
